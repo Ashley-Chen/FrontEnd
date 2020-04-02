@@ -25,5 +25,22 @@ const bubbleSort = (arr = []) => {
     return arr
 }
 
-const result = bubbleSort(array)
+// 快速排序
+const quickSort = ( arr = [] ) => {
+    const length = arr.length;
+    if(length < 2){
+        return arr
+    }
+    const flag = arr[0], left = [], right = [];
+    for(let i = 1; i < length; ++i){
+        if(arr[i] < flag){
+            left.push(arr[i]);
+        } else {
+            right.push(arr[i])
+        }
+    }
+    return quickSort(left).concat([flag], quickSort(right));
+}
+
+const result = quickSort(array)
 console.log('结果', result)
